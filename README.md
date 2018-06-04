@@ -23,16 +23,20 @@
 
 在每一个节点中，他做到了将与特定状态相关的行为局部化，并且将不同状态的行为分割开来。
 
-```
-graph TD
-    A[start] -->B(startLoadState)
-    B --> C{is work}
-    C --> |Yes| D(loadingState)
-    C --> |No| A
-    D --> E{is work}
-    E --> |yes| F(stopState)
-    E --> |No| A
-    F --> G[Finished]
+```flow
+st=>start: Start
+e=>end: End
+op1=>operation: startLoadState
+op2=>operation: LoadingState
+op3=>operation: stopLoadState
+cond1=>condition: is work?
+cond2=>condition: is work?
+cond1=>condition: is work?
+st->op1->cond1
+cond1(yes)->op2->cond2
+cond1(no)->op1
+cond2(yes)->op3->e
+cond2(no)->op2
 ```
 
 另外，当代码中出现包含大量和对象状态有关的条件语句，状态模式将可以把每个条件放入一个独立的类（状态）中。这使得你可以根据对象自身的情况将对象的状态作为一个对象，这一对象可以不依赖于其他对象而独立变化。

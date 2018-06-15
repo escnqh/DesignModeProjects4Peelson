@@ -1,6 +1,7 @@
 package singletonpattern_1;
 
 /**
+ * 单锁
  * @author nqh 2018/6/15
  */
 public class SingleUtil {

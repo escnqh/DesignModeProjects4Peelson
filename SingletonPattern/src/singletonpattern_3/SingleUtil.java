@@ -1,6 +1,8 @@
 package singletonpattern_3;
 
 /**
+ * 双锁
+ *
  * @author nqh 2018/6/15
  */
 public class SingleUtil {
@@ -10,6 +12,7 @@ public class SingleUtil {
     }
 
     public static SingleUtil getInstance() {
+        //先验证需不需要同步方法，保证效率
         if (null == singleUtil) {
             synchronized (SingleUtil.class) {
                 if (null == singleUtil) {

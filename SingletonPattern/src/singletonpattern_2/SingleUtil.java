@@ -1,6 +1,8 @@
 package singletonpattern_2;
 
 /**
+ * 静态内部类
+ *
  * @author nqh 2018/6/15
  */
 public class SingleUtil {

@@ -18,7 +18,7 @@
 
 ##### 分类
 
-demo：
+主要的代码实现和细节参照demo：https://github.com/escnqh/DesignModeProjects4Peelson/tree/master/SingletonPattern
 
 - 懒汉
   - 普通
@@ -37,7 +37,35 @@ demo：
 
 所以要注意的是getInstance() 方法中需要使用同步锁 synchronized (Singleton.class) 防止多线程同时进入造成 instance 被多次实例化。 
 
+##### 优缺点
 
+- 优点
+  - 在内存中只有一个实例，减少了内存的开销，尤其是频繁的创建和销毁实例 
+  - 避免对资源的多重占用（比如写文件操作） 
+  - 控制所有访问在唯一实例上进行
+- 缺点
+  - 没有接口，不能继承 
+  - 与单一职责原则冲突，一个类应该只关心内部逻辑，而不关心外面怎么样来实例化 （拆分出其他模块来执行，单例做一个入口） 
+  - 一些不必要的内存引用，会造成内存溢出（要有内存释放机制）
+  - 一些错误的引用，比如引用了不再使用的对象（典型的有对 Activity 的引用），会造成内存泄漏
+
+
+
+##### 问题
+
+1. 饿汉式基于 classloder 机制避免了多线程的同步问题，不过，instance 在类装载时就实例化，虽然导致类装载的原因有很多种，在单例模式中大多数都是调用 getInstance 方法， **但是也不能确定有其他的方式（或者其他的静态方法）导致类装载**，这时候初始化 instance 显然没有达到 lazy loading 的效果。 
+
+   > 阅读：http://www.importnew.com/6579.html
+
+   - 类什么时候被初始化
+
+     - 实例通过使用new()关键字创建或使用class.forName()反射，但他有可能导致ClassNotFoundException。
+     - 类的静态方法被调用
+     - 类的静态域被赋值
+     - 类的静态域被访问，而且它不是常量
+     - 在顶层类中执行assert语句
+
+     反射同样可以使类初始化，比如java.lang.reflect包下面的某些方法，JLS严格的说明：一个类不会被任何除以上之外的原因初始化。 
 
 ### 行为型
 
@@ -61,7 +89,7 @@ demo：
 
 在每一个节点中，他做到了将与特定状态相关的行为局部化，并且将不同状态的行为分割开来。
 
-![20180604192211.png](https://github.com/escnqh/DesignModeProjects4Peelson/tree/master/20180604192211.png)
+![20180604192211.png](https://github.com/escnqh/DesignModeProjects4Peelson/blob/master/20180604192211.png?raw=true)
 
 另外，当代码中出现包含大量和对象状态有关的条件语句，状态模式将可以把每个条件放入一个独立的类（状态）中。这使得你可以根据对象自身的情况将对象的状态作为一个对象，这一对象可以不依赖于其他对象而独立变化。
 
@@ -119,9 +147,7 @@ https://github.com/escnqh/DesignModeProjects4Peelson/tree/master/StateMode
 - 真实主题角色
     - 实现了真实的业务操作。由代理主题角色来间接调用完成操作
 
-##### 静态代理Demo
+##### Demo
 
 https://github.com/escnqh/DesignModeProjects4Peelson/tree/master/ProxyPattern
-
-##### 动态代理Demo
 

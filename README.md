@@ -89,7 +89,7 @@
 
 在每一个节点中，他做到了将与特定状态相关的行为局部化，并且将不同状态的行为分割开来。
 
-![20180604192211.png](https://github.com/escnqh/DesignModeProjects4Peelson/blob/master/20180604192211.png?raw=true)
+![20180604192211.png](https://github.com/escnqh/DesignModeProjects4Peelson/blob/master/Resource/20180604192211.png?raw=true)
 
 另外，当代码中出现包含大量和对象状态有关的条件语句，状态模式将可以把每个条件放入一个独立的类（状态）中。这使得你可以根据对象自身的情况将对象的状态作为一个对象，这一对象可以不依赖于其他对象而独立变化。
 

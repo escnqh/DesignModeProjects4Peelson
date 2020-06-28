@@ -5,7 +5,7 @@ import LoadTool.LoadFileContext;
  */
 class Mian {
     public static void main(String[] args){
-        LoadFileContext loadFileContext=new LoadFileContext();
+        LoadFileContext loadFileContext = new LoadFileContext();
         loadFileContext.startLoad("https://www.baidu.com");
     }
 }

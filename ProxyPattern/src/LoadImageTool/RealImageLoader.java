@@ -3,7 +3,7 @@ package LoadImageTool;
 /**
  * @author nqh 2018/6/4
  */
-class RealImageLoader implements ImageLoader {
+class RealImageLoader implements IImageLoader {
     private String mFileSource;
 
 

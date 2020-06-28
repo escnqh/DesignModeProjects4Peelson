@@ -3,7 +3,7 @@ package LoadImageTool;
 /**
  * @author nqh 2018/6/4
  */
-public class ProxyImageLoader implements ImageLoader {
+public class ProxyImageLoader implements IImageLoader {
     private RealImageLoader realImageLoader;
     private String mFileSource;
 
